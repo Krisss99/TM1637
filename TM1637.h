@@ -1,14 +1,24 @@
 /**
   ******************************************************************************
-  * @file     tm1637_t.h
+  * @file     tm1637.h
   * @author   Krzysztof Cajler
-  * @version  V0.1
-  * @date     19/01/2026
+  * @version  V1.0
+  * @date     20/01/2026
   * @brief    Default under dev library file.
   ******************************************************************************
 */
 
+#ifndef __TM1637_H
+#define __TM1637_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
+#include "stm32l4xx.h"
+
+#define DELAY_US		500
 
 typedef struct tm1637_t {
     GPIO_TypeDef *clk_port;
@@ -34,4 +44,10 @@ int tm1637_off(tm1637_t *p);
 
 /* Update screen with new time in seconds, it will be converted to mm:ss */
 int tm1637_update_time(tm1637_t *p, uint16_t seconds);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __TM1637_H */
 
